@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -17,9 +18,31 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DynamicThemeHelper.applyToActivity(this);
         setContentView(R.layout.activity_settings);
 
         final SharedPreferences prefs = getSharedPreferences("appalarm_prefs", MODE_PRIVATE);
+
+        // 0. システムカラー (Material You / Dynamic Colors) 設定
+        SwitchCompat switchDynamicColor = findViewById(R.id.switch_dynamic_color);
+        TextView tvDynamicDesc = findViewById(R.id.tv_dynamic_color_desc);
+
+        if (DynamicThemeHelper.isDynamicColorSupported()) {
+            switchDynamicColor.setEnabled(true);
+            switchDynamicColor.setChecked(DynamicThemeHelper.isDynamicColorEnabled(this));
+            switchDynamicColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                DynamicThemeHelper.setDynamicColorEnabled(SettingsActivity.this, isChecked);
+                Toast.makeText(SettingsActivity.this,
+                        "配色設定を更新しました",
+                        Toast.LENGTH_SHORT).show();
+                // 画面を再生成して即時反映
+                recreate();
+            });
+        } else {
+            switchDynamicColor.setEnabled(false);
+            switchDynamicColor.setChecked(false);
+            tvDynamicDesc.setText("※ Android 12以降の端末で利用できます（現在の端末は非対応）");
+        }
 
         // 1. 音量フェードイン設定
         SwitchCompat switchFade = findViewById(R.id.switch_fade_enabled);

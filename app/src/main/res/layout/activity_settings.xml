@@ -19,6 +19,43 @@
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
+        <!-- システムカラー (Material You / Dynamic Colors) 設定カード -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/widget_background"
+            android:backgroundTint="#FFFFFF"
+            android:elevation="1dp"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="外観とシステム配色"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_dynamic_color_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="壁紙やAndroidシステムのアクセントカラーをアプリ全体に適用します"
+                android:textColor="#64748B"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_dynamic_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="システムの色を使う (Material You)"
+                android:checked="true" />
+        </LinearLayout>
+
         <!-- 音量フェードイン設定カード -->
         <LinearLayout
             android:layout_width="match_parent"

@@ -31,6 +31,7 @@ public class HistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DynamicThemeHelper.applyToActivity(this);
         setContentView(R.layout.activity_history);
 
         tvTotal = findViewById(R.id.tv_stat_total);
