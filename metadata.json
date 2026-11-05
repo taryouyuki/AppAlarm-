@@ -1,0 +1,8 @@
+{
+  "name": "AppAlarm (アプリ起動アラーム)",
+  "description": "指定した時刻に「このアプリを開きますか？」と確認・自動起動するアラームWebアプリ。日本の祝日スキップ、曜日別設定、スヌーズ、音声読み上げ、全画面アラーム鳴動、バックアップ復元対応。",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

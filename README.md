@@ -1,11 +1,39 @@
-<div align="center">
+# アプリ起動アラーム (AppAlarm) - React Web App
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+指定した時刻になると「このアプリを開きますか？」という通知・全画面アラームを出し、ワンタップで対象アプリを起動する Web アプリケーションです。
+Android 版 AppAlarm の全機能・ビジネスロジックを忠実に React + TypeScript + Vite + Tailwind CSS に移植しています。
 
-  <h1>Built with AI Studio</h2>
+## 機能
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+| 機能 | 内容 |
+|---|---|
+| **時刻指定** | 24時間表示対応の直感的なタイムピッカー |
+| **対象アプリ** | YouTube, LINE, X, Google マップ, Gmail, Spotify, Slack, カレンダーなどのプリセットに加え、自由なアプリ・Webサイトの追加に対応 |
+| **繰り返し** | 1回だけ / 毎日 / 曜日指定 / 日付指定 / 曜日ごとに時刻を変える（月〜日の各曜日に個別時刻設定） |
+| **日本の祝日スキップ** | 日本の祝日（振替休日・国民の休日を含む法定ルール、春分・秋分の計算式）を自動計算して除外 |
+| **通知スタイル** | 標準の通知音 / 無音 / 通知音の選択（試聴つき） / 音声読み上げ（Web Speech Synthesis TTS） |
+| **起動のしかた** | 確認して開く / 確認せずに自動で開く（autoOpen） |
+| **アラーム鳴動** | 全画面アラーム画面（画面点灯・アラーム音ループ・徐々に音量を上げるフェードイン・「停止」「スヌーズ」） |
+| **再通知（スヌーズ）** | アプリ既定設定（5/10/15/30/60分）＋アラームごとの上書き。上限回数（1/2/3/5回/上限なし/再通知しない） |
+| **外観** | システム連動 / ライト / ダークテーマ。Material You 風の動的アクセントカラー |
+| **ウィジェット** | ホーム画面ウィジェットの再現プレビュー（次のアプリと時刻を表示、ワンタップ起動） |
+| **バックアップと復元** | アラーム設定をJSON形式でダウンロード保存／ファイルから復元 |
+| **履歴と統計** | 発火回数、停止、スヌーズ、自動起動、通知のみの集計と最近の履歴ログ |
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 技術スタック
 
-</div>
+- **フロントエンド**: React 19, TypeScript
+- **ビルドツール**: Vite 6
+- **スタイリング**: Tailwind CSS v4
+- **アイコン**: Lucide React
+- **オーディオ / TTS**: Web Audio API（カスタム合成チャイム／フェードイン）、Web Speech API（日本語音声合成）
+- **通知**: Web Notification API + アプリ内ヘッドアップ通知
+
+## 起動方法
+
+```bash
+npm install
+npm run dev
+```
+
+ポート 3000 (`http://localhost:3000`) で開発サーバーが起動します。
